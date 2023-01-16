@@ -6,13 +6,13 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:36:50 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/01/16 17:35:46 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/01/16 22:56:56 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(char *str, int nb)
+static char	*ft_putnbr(char *str, int nb)
 {
 	char	un;
 
@@ -28,6 +28,7 @@ void	ft_putnbr(char *str, int nb)
 		}
 		else
 		{
+			
 			write(1, "-", 1);
 			ft_putnbr(nb);
 		}
