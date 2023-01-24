@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:49:02 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/01/16 22:42:34 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/01/24 16:38:35 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stddef.h>
+# include <stdlib.h>
 
 int		ft_islower(int c);
 int		ft_isupper(int c);
@@ -39,15 +40,5 @@ char	*ft_calloc(size_t count, size_t size);
 char	*strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_itoa(int n);
-
-/*
-int	main(void)
-{
-	if (sizeof(void *) == 4)
-		typedef unsigned long size_t;
-	else if (sizeof(void *) == 8)
-		typedef unsigned long long size_t;
-	return (0);
-}*/
 
 #endif

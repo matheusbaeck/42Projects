@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:31:34 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/01/16 22:20:25 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/01/24 14:53:34 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t	size_s2;
 	size_t	i;
 	char	**piece;
-	char 	*s2;
+	char	*s2;
 
 	n_pieces = ft_strlen(s);
 	if (!(piece = malloc(sizeof(char *) * n_pieces)))

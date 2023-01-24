@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/01/16 22:52:08 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/01/24 14:54:32 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRC = ft_islower.c \
 
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME)
+all: $(NAME) clean
 
 $(NAME): $(OBJ) libft.h
 	$(LIB_CC) $(NAME) $(OBJ)
@@ -62,5 +62,5 @@ fclean: clean
 
 re: fclean libft.a all
 
-test: libft.a
+test:
 	norminette
