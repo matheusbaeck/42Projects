@@ -6,11 +6,13 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:36:50 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/01/24 17:25:31 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/01/26 17:19:20 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stddef.h>
+#include <string.h>
 
 static int	ft_powten(int pow_n)
 {
