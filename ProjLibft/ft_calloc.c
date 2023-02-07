@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 13:55:48 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/01/16 22:06:14 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/07 17:11:12 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_calloc(size_t count, size_t size)
 	{
 		while (i--)
 		{
-			*v = '\0';
+			v[i] = '\0';
 		}
 		return (v);
 	}

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: math42 <math42@student.42.fr>              +#+  +:+       +#+         #
+#    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/02/06 17:00:18 by math42           ###   ########.fr        #
+#    Updated: 2023/02/07 17:07:01 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ fclean: clean
 
 re: fclean libft.a all
 
+# $(CC) main.c -o main.out -lft -lbsd;
 main: $(SRC) clean
 	export LIBRARY_PATH=$(LIB_PATH); \
-	$(CC) main.c -o main.out -lft -lbsd; \
+	$(CC) main.c -o main.out -lft; \
 	./main.out | cat -e

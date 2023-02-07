@@ -26,5 +26,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		s2 = ft_calloc(initial - final, sizeof(char));
 		ft_strlcpy(s2, &s1[final - initial], ft_strlen(set));
 	}
+	else
+		return (0);
 	return (s2);
 }

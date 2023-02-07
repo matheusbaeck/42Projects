@@ -18,10 +18,11 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t	size_s2;
 	size_t	i;
 	char	**piece;
-	char 	*s2;
+	char	*s2;
 
 	n_pieces = ft_strlen(s);
-	if (!(piece = malloc(sizeof(char *) * n_pieces)))
+	piece = malloc(sizeof(char *) * n_pieces);
+	if (!(piece))
 		return (0);
 	i = 0;
 	size_s2 = 0;
@@ -32,7 +33,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		i++;
 	}
 	i = 0;
-	if (!(s2 = malloc(sizeof(char) * size_s2)))
+	s2 = malloc(sizeof(char) * size_s2);
+	if (!(s2))
 		return (0);
 	while (i < n_pieces)
 	{

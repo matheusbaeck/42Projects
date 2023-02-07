@@ -1,7 +1,7 @@
 
 #include "libft.h"
 
-#include <bsd/string.h>
+#include <string.h>
 #include <stdio.h>
 #include <unistd.h>
 
