@@ -3,31 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:12:58 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/01/13 12:54:33 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/04 14:29:33 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// duvida, se tem mais de um null no fim, vai retornar
-// o primeiro, isso 'e um erro
-
-char	*strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	unsigned int	i;
-
-	i = 0;
 	while (*s)
 	{
-		if (s[i] || s[i] == (char) c)
+		if (*s == (char) c)
 		{
-			s += i;
+			return ((char *) s);
 		}
-		else
-			s++;
+		s++;
 	}
+	if (*s != c)
+		return (0);
 	return ((char *) s);
 }

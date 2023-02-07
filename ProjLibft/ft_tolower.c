@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:08:44 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/01/13 12:10:15 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/04 13:55:36 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_tolower(int c)
 {
-	if (ft_isupper(c))
+	if (c >= 'A' && c <= 'Z')
 	{
-		c = c - 'A' + 'a';
+		c = c + ('a' - 'A');
 		return (c);
 	}
-	return (0);
+	return (c);
 }

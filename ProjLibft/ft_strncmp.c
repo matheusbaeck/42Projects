@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:59:00 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/01/13 15:48:39 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/04 15:01:17 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		s1++;
 		s2++;
 	}
-	return (*s1 - *s2);
+	if ((*s1 - *s2) > 0)
+		return (1);
+	if ((*s1 - *s2) < 0)
+		return (-1);
+	return (0);
 }

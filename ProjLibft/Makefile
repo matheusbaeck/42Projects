@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
+#    By: math42 <math42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/01/24 14:54:32 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/02/06 17:00:18 by math42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror -c -o
 
 LIB_CC = ar rcs
+
+LIB_PATH = ./
 
 SRC = ft_islower.c \
 	ft_isupper.c \
@@ -39,6 +41,7 @@ SRC = ft_islower.c \
 	ft_strncmp.c \
 	ft_strnstr.c \
 	ft_atoi.c \
+	ft_strtrim.c \
 	ft_calloc.c \
 	ft_strdup.c \
 	ft_substr.c \
@@ -46,7 +49,7 @@ SRC = ft_islower.c \
 
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME) clean
+all: $(NAME) clean main
 
 $(NAME): $(OBJ) libft.h
 	$(LIB_CC) $(NAME) $(OBJ)
@@ -55,12 +58,14 @@ $(NAME): $(OBJ) libft.h
 	$(CC) $(FLAGS) $@ $<
 
 clean:
-	/bin/rm -f *.o
+	/bin/rm -rf *.o *.dSYM *.out
 
 fclean: clean
 	/bin/rm -f $(NAME)
 
 re: fclean libft.a all
 
-test:
-	norminette
+main: $(SRC) clean
+	export LIBRARY_PATH=$(LIB_PATH); \
+	$(CC) main.c -o main.out -lft -lbsd; \
+	./main.out | cat -e
