@@ -148,19 +148,30 @@ void	test_itoa(void)
 	write(1, alpha, 12);
 }
 
+void test_strdup(void)
+{
+	char	*str;
+
+	str = ft_strdup("123456789");
+	write(1, str, 12);
+}
+
+// void test_trim2(void)
+// {
+// 	char strim
+// 	char s1[] = "lorem \n ipsum \t dolor \n sit \t amet";
+//     if (!(strtrim = ft_strtrim(s1, " ")))
+//         ft_print_result("NULL");
+// }
+
 int	main(void)
 {
-	int	c;
-
-	c = '\e';
-
-	write(1, &c, 1);
-	printf("\n%i\n", c);
 	//test1_strlcat();
 	//test2_strlcat();
 	//test_strncmp();
 	//test_itoa();
 	//test_atoi();
+	//test_strdup();
 
 	return (0);
 }

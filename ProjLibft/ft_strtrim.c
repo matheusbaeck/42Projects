@@ -14,19 +14,22 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	initial;
-	size_t	final;
-	char	*s2;
+	size_t			len;
+	unsigned int	start;
+	char			*s2;
 
-	initial = ft_strlen(set);
-	final = ft_strlen(s1) - ft_strlen(set);
-	if (ft_strncmp(s1, set, ft_strlen(set) - 1)
-		&& ft_strncmp(&s1[final], set, ft_strlen(set)))
+	start = 0;
+	len = ft_strlen(s1);
+	while (ft_strchr(set, s1[start]) && start < len)
+		start += 1;
+	if (start == len)
 	{
-		s2 = ft_calloc(initial - final, sizeof(char));
-		ft_strlcpy(s2, &s1[final - initial], ft_strlen(set));
+		s2 = ft_calloc(1, sizeof(char));
+		return (s2);
 	}
-	else
-		return (0);
+	while (ft_strrchr(set, s1[len - 1]) && len > 0)
+		len -= 1;
+		len -= start;
+	s2 = ft_substr(s1, start, len);
 	return (s2);
 }
