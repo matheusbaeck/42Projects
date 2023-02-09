@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:36:50 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/01/26 17:19:20 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/09 19:04:28 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ static int	ft_powten(int pow_n)
 	n = 10;
 	if (pow_n < 0)
 		return (0);
-	if (pow_n == 1)
+	if (pow_n == 0)
 		return (1);
-	while (pow_n > 0)
+	if (pow_n == 1)
+		return (10);
+	while (pow_n > 1)
 	{
 		n *= 10;
 		pow_n--;
@@ -31,19 +33,27 @@ static int	ft_powten(int pow_n)
 	return (n);
 }
 
-static void	ft_nattoa(char *str, int n, size_t pow_n)
+static void	ft_inttoa(char *str, int n, size_t pow_n, int sign)
 {
 	size_t	str_i;
 	char	append;
+	int		pow;
+	int		n_split;
 
+	if (n == 0)
+		str[0] = '0';
 	str_i = ft_strlen(str);
-	while (n > 0)
+	while (pow_n > 0)
 	{
-		append = (n - (n % (ft_powten(pow_n - 1)))) / (ft_powten(pow_n - 1));
-		n = n - (n % (ft_powten(pow_n - 1)));
-		str[str_i] = (char)append + '0';
+		pow = ft_powten(pow_n - 1);
+		n_split = ((n * sign) - ((n % (pow)) * sign));
+		append = (n_split / (pow)) + '0';
+		n = n - (n_split * sign);
+		str[str_i] = (char)append;
 		pow_n--;
+		str_i++;
 	}
+	str[str_i] = '\0';
 }
 
 char	*ft_itoa(int n)
@@ -55,7 +65,7 @@ char	*ft_itoa(int n)
 
 	pow_n = 0;
 	n_count = n;
-	while (pow_n++ && n_count > 0)
+	while (n_count != 0 && ++pow_n)
 		n_count = n_count / 10;
 	sign = 1;
 	if (n < 0)
@@ -63,13 +73,11 @@ char	*ft_itoa(int n)
 		sign = -1;
 		str = malloc((pow_n + 2) * sizeof(char));
 		str[0] = '-';
-		if (n == (-2147483648))
-			str[1] = '2';
 	}
 	else
 		str = malloc((pow_n + 1) * sizeof(char));
 	if (!(str))
 		return (0);
-	ft_nattoa(str, n * sign, pow_n);
+	ft_inttoa(str, n, pow_n, sign);
 	return (str);
 }

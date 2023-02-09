@@ -89,72 +89,72 @@ void	test_strncmp(void)
 
 }*/
 
-void	test_atoi(void)
-{
-	int	n;
-	int error;
+// void	test_atoi(void)
+// {
+// 	int	n;
+// 	int error;
 
-	error = 0;
-	n = ft_atoi("546");
-	if (546 != n)
-	{
-		error *= 10;
-		error += 1;
-	}
+// 	error = 0;
+// 	n = ft_atoi("546");
+// 	if (546 != n)
+// 	{
+// 		error *= 10;
+// 		error += 1;
+// 	}
 
-	n = ft_atoi("\t\n\r\v\f  469 \n");
-	if (469 != n)
-	{
-		error *= 10;
-		error += 2;
-	}
+// 	n = ft_atoi("\t\n\r\v\f  469 \n");
+// 	if (469 != n)
+// 	{
+// 		error *= 10;
+// 		error += 2;
+// 	}
 
-	n = ft_atoi("\n\n\n  -46\b9 \n5d6");
-	if (-46 != n)
-	{
-		error *= 10;
-		error += 3;
-	}
+// 	n = ft_atoi("\n\n\n  -46\b9 \n5d6");
+// 	if (-46 != n)
+// 	{
+// 		error *= 10;
+// 		error += 3;
+// 	}
 
-	n = ft_atoi("\e475");
-	if (0 != n)
-	{
-		error *= 10;
-		error += 4;
-	}
+// 	n = ft_atoi("\e475");
+// 	if (0 != n)
+// 	{
+// 		error *= 10;
+// 		error += 4;
+// 	}
 
-	n = ft_atoi("\t\n\r\v\fd469 \n");
-	if (0 != n)
-	{
-		error *= 10;
-		error += 5;
-	}
-	printf("error %i\n", error);
-}
+// 	n = ft_atoi("\t\n\r\v\fd469 \n");
+// 	if (0 != n)
+// 	{
+// 		error *= 10;
+// 		error += 5;
+// 	}
+// 	printf("error %i\n", error);
+// }
 
-void	test_itoa(void)
-{
-	char	*alpha;
-	int		number;
-	int		count;
+// void	test_itoa(void)
+// {
+// 	char	*alpha;
+// 	int		number;
+// 	int		count;
 
-	count = -2147483648;
-	alpha = ft_itoa(count);
-	while (number == count)
-	{
-		alpha = ft_itoa(count);
+// 	count = -2147483648;
+// 	alpha = ft_itoa(count);
+// 	while (number == count)
+// 	{
+// 		alpha = ft_itoa(count);
 
-	}
-	write(1, alpha, 12);
-}
+// 	}
+// 	write(1, alpha, 12);
+// }
 
-void test_strdup(void)
-{
-	char	*str;
+// void test_strdup(void)
+// {
+// 	char	*str;
 
-	str = ft_strdup("123456789");
-	write(1, str, 12);
-}
+// 	str = ft_strdup("123456789");
+// 	write(1, str, 12);
+// }
 
 // void test_trim2(void)
 // {

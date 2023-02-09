@@ -14,22 +14,34 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t			size_s2;
+	unsigned int	n_pieces;
+	unsigned int	size_s2;
 	unsigned int	i;
+	char			**piece;
 	char			*s2;
 
+	n_pieces = ft_strlen(s);
+	piece = malloc(sizeof(char *) * n_pieces);
+	if (!(piece))
+		return (0);
 	i = 0;
-	if (!s || !f)
-		return (0);
-	size_s2 = ft_strlen(s);
-	s2 = malloc(sizeof(char) * (size_s2 + 1));
-	if (!(s2))
-		return (0);
-	while (i < size_s2)
+	size_s2 = 0;
+	while (i < n_pieces)
 	{
-		s2[i] = f(i, s[i]);
+		piece[i] = f(i, s[i]);
+		size_s2 += ft_strlen(piece[i]);
 		i++;
 	}
-	s2[i] = '\0';
+	i = 0;
+	s2 = malloc(sizeof(char) * size_s2);
+	if (!(s2))
+		return (0);
+	while (i < n_pieces)
+	{
+		ft_strlcat(s2, piece[i], ft_strlen(*piece));
+		free(piece[i]);
+		i++;
+	}
+	free(piece);
 	return (s2);
 }
