@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/02/09 22:31:59 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/02/10 04:43:37 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRC = ft_islower.c \
 	ft_calloc.c \
 	ft_strdup.c \
 	ft_substr.c \
+	ft_strjoin.c \
 	ft_itoa.c \
 	ft_strmapi.c \
 	ft_striteri.c
