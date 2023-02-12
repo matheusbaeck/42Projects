@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:36:50 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/02/09 19:04:28 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/12 00:09:57 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ static void	ft_inttoa(char *str, int n, size_t pow_n, int sign)
 	int		pow;
 	int		n_split;
 
+	str_i = 0;
 	if (n == 0)
 		str[0] = '0';
-	str_i = ft_strlen(str);
+	if (sign < 0)
+		str_i++;
 	while (pow_n > 0)
 	{
 		pow = ft_powten(pow_n - 1);
@@ -68,7 +70,7 @@ char	*ft_itoa(int n)
 	while (n_count != 0 && ++pow_n)
 		n_count = n_count / 10;
 	sign = 1;
-	if (n < 0)
+	if (n <= 0)
 	{
 		sign = -1;
 		str = malloc((pow_n + 2) * sizeof(char));

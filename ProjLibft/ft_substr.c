@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:53:08 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/02/10 04:30:57 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/12 00:40:54 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	new_len;
 	char	*s2;
 
-	if (start == ft_strlen(s) || len == 0)
+	if (start >= ft_strlen(s) || len == 0 ||!(start < (unsigned int) UINT_MAX))
 		new_len = 0;
 	else if (start < ft_strlen(s))
 	{

@@ -30,8 +30,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (ft_strrchr(set, s1[len - 1]) && len > 0)
 	{
 		len -= 1;
-		len -= start;
 	}
+	len -= start;
 	s2 = ft_substr(s1, start, len);
 	return (s2);
 }

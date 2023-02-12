@@ -1,50 +1,88 @@
-char    **ft_split(char const *s, char c)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/12 02:27:30 by mamagalh@st       #+#    #+#             */
+/*   Updated: 2023/02/12 02:27:30 by mamagalh@st      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+static char	*ft_piece_split(const char *s, size_t start, int c)
 {
-	size_t	i;
-    size_t	sub_str_size;
-	size_t	sub_str_count;
-	char	*sub_str;
-    char**	s2;
+	unsigned int	len_piece;
+	char			*str;
 
-	i = -1;
-	sub_str_count = 0;
-	while (i++ || s[i])
-	{
-		if (s[i] == c)
-		{
-			sub_str_count *= -1;
-		}
-		else if (sub_str_count <= 0)
-		{
-			sub_str_count++;
-			sub_str_count *= -1;
-		}			
-	}
-	i = -1;
-	s2 = (char **) malloc(sub_str_count * sizeof(char *));
-	if (!(s2))
+	len_piece = 0;
+	while (((unsigned char)s[len_piece + start])
+		&& ((unsigned char)s[len_piece + start]) != ((unsigned char) c))
+		len_piece++;
+	str = malloc((len_piece + 1) * sizeof(char));
+	if (!str)
 		return (0);
-	sub_str = strchr(s, c);
-	while (sub_str && i++)
-	{
-		sub_str++;
-		sub_str_size = strlen(sub_str) - strlen(strchr(sub_str, c));
-		if (strchr(sub_str, c))
-		{
-			s2[i] = calloc(sizeof(char *) * (sub_str_size + 1));
-			strlcpy(s2[i], sub_str, sub_str_size);
-
-		}
-		else
-		{
-			sub_str_size = strlen(sub_str);
-			s2[i] = calloc(sizeof(char *) * (sub_str_size));
-			strlcpy(s2[i], sub_str, sub_str_size)
-			return (s2);
-		}
-	}
-	return (s);
+	ft_strlcpy(str, &s[start], len_piece + 1);
+	return (str);
 }
 
-0123456789
-abcdecghi*
+static unsigned int	ft_count_split(const char *s, int c)
+{
+	unsigned int	selector;
+	unsigned int	count;
+	unsigned int	index;
+
+	index = 0;
+	count = 0;
+	selector = 0;
+	while (s[index])
+	{
+		if (((unsigned char) s[index]) == ((unsigned char) c))
+			selector = 0;
+		else
+		{
+			if (selector == 0)
+				count++;
+			selector++;
+		}
+		index++;
+	}
+	return (count);
+}
+
+static int	ft_free(char **str, unsigned int count)
+{
+	while (--count > 1)
+		free(str[count]);
+	free(str);
+	return (0);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char			**str;
+	unsigned int	index;
+	unsigned int	count;
+
+	str = (char **)ft_calloc(ft_count_split(s, c) + 1, sizeof(char *));
+	if (!str)
+		return (0);
+	count = 0;
+	index = 0;
+	while (s[index])
+	{
+		if (s[index] == c)
+			index++;
+		else
+		{
+			str[count] = ft_piece_split(s, index, c);
+			if (!(str[count]) && !(ft_free(str, count)))
+				return (0);
+			index += ft_strlen(str[count]);
+			count++;
+		}
+	}
+	return (str);
+}

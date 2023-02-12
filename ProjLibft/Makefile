@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/02/10 04:43:37 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/02/12 09:47:50 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,13 +49,18 @@ SRC = ft_islower.c \
 	ft_strdup.c \
 	ft_substr.c \
 	ft_strjoin.c \
+	ft_split.c \
 	ft_itoa.c \
 	ft_strmapi.c \
-	ft_striteri.c
+	ft_striteri.c \
+	ft_putchar_fd.c \
+	ft_putstr_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c
 
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME) clean main
+all: $(NAME)
 
 $(NAME): $(OBJ) libft.h
 	$(LIB_CC) $(NAME) $(OBJ)

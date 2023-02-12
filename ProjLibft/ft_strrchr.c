@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 12:47:27 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/02/09 21:01:46 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/11 19:23:05 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ char	*ft_strrchr(const char *s, int c)
 	unsigned int	i;
 
 	i = 0;
-	while (*s && s[i] != '\0')
+	while (((unsigned char)s[i]))
 	{
-		if (s[i] == (char) c)
+		if (((unsigned char)s[i]) == ((unsigned char) c))
 		{
 			s += i;
 			i = 1;
@@ -27,9 +27,9 @@ char	*ft_strrchr(const char *s, int c)
 		else
 			i++;
 	}
-	if (c == '\0')
+	if ((unsigned char)c == '\0')
 		s += i;
-	if (*s != c)
+	if (*s != (unsigned char)c)
 		return (0);
 	return ((char *) s);
 }
