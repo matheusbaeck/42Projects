@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/02/12 09:47:50 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/02/15 08:02:19 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libft.a
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror -c -o
+FLAGS = -Wall -Wextra -Werror -c -g -o
 
 LIB_CC = ar rcs
 
@@ -60,10 +60,21 @@ SRC = ft_islower.c \
 
 OBJ = $(SRC:.c=.o)
 
+BONUS_SRC = ft_lstnew.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c \
+	ft_lstlast.c \
+	ft_lstadd_back.c \
+	ft_lstdelone.c \
+	ft_lstclear.c \
+	ft_lstiter.c
+
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
+
 all: $(NAME)
 
 $(NAME): $(OBJ) libft.h
-	$(LIB_CC) $(NAME) $(OBJ)
+	$(LIB_CC) $(NAME) $(OBJ) libft.h
 
 %.o:%.c
 	$(CC) $(FLAGS) $@ $<
@@ -81,3 +92,8 @@ main: $(SRC) clean
 	export LIBRARY_PATH=$(LIB_PATH); \
 	$(CC) main.c -o main.out -lft; \
 	./main.out | cat -e
+
+_bonus: $(BONUS_OBJ) libft.h
+	$(LIB_CC) libft.a $(BONUS_OBJ) libft.h
+
+bonus: _bonus
