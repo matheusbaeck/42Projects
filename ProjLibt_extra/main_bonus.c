@@ -6,13 +6,13 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 02:56:20 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/02/15 07:59:57 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/16 21:41:16 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "/Users/mamagalh/42Projects/ProjLibft/libft.h"
 #include <string.h>
-
+#include <stdio.h>
 
 int	test_size1(void)
 {
@@ -90,8 +90,23 @@ int	test_lstadd_back2(void)
 	return (0);
 }
 
+void *addone(void *c)
+{
+	*((char)c) = 'a';
+	return (c);
+}
+
 int	main(void)
 {
-	test_lstadd_back2();
+	t_list	*lst1;
+	t_list	*lst2;
+	t_list	*lst3;
+	t_list	**temp;
+
+	*lst1 = ft_lstnew("a");
+	*lst2 = ft_lstnew("b");
+	*lst3 = ft_lstnew("c");
+	lst1->next = lst2;
+	lst2->next = lst3;
 	return (0);
 }

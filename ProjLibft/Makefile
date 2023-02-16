@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/02/15 08:02:19 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/02/16 21:41:14 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,8 @@ BONUS_SRC = ft_lstnew.c \
 	ft_lstadd_back.c \
 	ft_lstdelone.c \
 	ft_lstclear.c \
-	ft_lstiter.c
+	ft_lstiter.c \
+	ft_lstmap.c
 
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 

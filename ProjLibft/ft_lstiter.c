@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 21:39:30 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/02/15 01:55:41 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/16 20:18:29 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (lst && f)
 	{
-		while (!(lst->next))
+		while (lst->next)
 		{
 			f(lst->content);
 			lst = lst->next;
 		}
+		f(lst->content);
 	}
 }

@@ -1,5 +1,5 @@
 
-#include "libft.h"
+#include "/Users/mamagalh/42Projects/ProjLibft/libft.h"
 
 #include <string.h>
 #include <stdio.h>

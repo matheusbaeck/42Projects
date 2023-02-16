@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 15:36:50 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/02/12 00:09:57 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/16 22:56:20 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ char	*ft_itoa(int n)
 	{
 		sign = -1;
 		str = malloc((pow_n + 2) * sizeof(char));
+		if (!(str))
+			return (0);
 		str[0] = '-';
 	}
 	else
