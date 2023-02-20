@@ -1,5 +1,55 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 22:34:59 by mamagalh@st       #+#    #+#             */
+/*   Updated: 2023/02/20 22:44:34 by mamagalh@st      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "limits.h"
 #include <unistd.h>
+#include <stdlib.h>
+
+char	*ft_calloc(size_t count, size_t size)
+{
+	char			*v;
+	unsigned int	i;
+
+	i = (count * size);
+	v = malloc(count * size);
+	if (v)
+	{
+		while (i--)
+		{
+			v[i] = '\0';
+		}
+		return (v);
+	}
+	return (0);
+}
+
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned int	index;
+
+	index = 0;
+	if (n == 0)
+		return (0);
+	while (index < (n - 1)
+		&& ((unsigned char *)s)[index] != (unsigned char)c)
+	{
+		index++;
+	}
+	s += index;
+	if (*((unsigned char *)s) == (unsigned char)c)
+		return ((void *)s);
+	else
+		return (0);
+}
 
 size_t	ft_strlen(const char *s)
 {
@@ -13,29 +63,50 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-size_t	ft_strlcatchr(char *dst, const char *src, size_t dstsize, int c);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	start;
 
 	i = 0;
-	start = ft_strlen(dst);
 	if (dstsize <= 0)
-		return (ft_strlen(src) + dstsize);
-	while (start + i < (dstsize - 1)
-		&& src[i] != c)
+		return (ft_strlen(src));
+	if (!(src[i]))
 	{
-		dst[start + i] = src[i];
+		dst[i] = src[i];
+		return (ft_strlen(dst));
+	}
+	while (i < (dstsize - 1))
+	{
+		dst[i] = src[i];
 		i++;
 		if (!(src[i]))
 		{
-			dst[start + i] = src[i];
+			dst[i] = '\0';
 			return (ft_strlen(dst));
 		}
 	}
-	if ((start + i) < dstsize)
-		dst[start + i] = '\0';
-	if (start > dstsize)
-		return (ft_strlen(src) + dstsize);
-	return (ft_strlen(src) + start);
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*s3;
+	size_t	len_s1;
+	size_t	len_s2;
+
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	if (!(len_s1 > SIZE_T_MAX) && !(len_s2 > SIZE_T_MAX))
+	{
+		s3 = malloc((len_s1 + len_s2 + 1) * sizeof(char));
+		if (!s3)
+			return (0);
+		if (ft_strlcpy(s3, s1, len_s1 + 1) == ft_strlen(s3)
+			&& ft_strlcpy(&s3[len_s1], s2, len_s2 + 1)
+			== ft_strlen(&s3[len_s1]))
+			return (s3);
+	}
+	return (0);
+}
+
