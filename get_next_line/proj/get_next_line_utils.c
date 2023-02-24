@@ -6,31 +6,13 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:34:59 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/02/20 22:44:34 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/02/24 05:08:18 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "limits.h"
 #include <unistd.h>
 #include <stdlib.h>
-
-char	*ft_calloc(size_t count, size_t size)
-{
-	char			*v;
-	unsigned int	i;
-
-	i = (count * size);
-	v = malloc(count * size);
-	if (v)
-	{
-		while (i--)
-		{
-			v[i] = '\0';
-		}
-		return (v);
-	}
-	return (0);
-}
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
@@ -49,6 +31,23 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		return ((void *)s);
 	else
 		return (0);
+}
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (dst || src)
+	{
+		while (i < n)
+		{
+			((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
+		return (dst);
+	}
+	return (NULL);
 }
 
 size_t	ft_strlen(const char *s)
@@ -89,7 +88,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (ft_strlen(src));
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*s3;
 	size_t	len_s1;
@@ -105,8 +104,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		if (ft_strlcpy(s3, s1, len_s1 + 1) == ft_strlen(s3)
 			&& ft_strlcpy(&s3[len_s1], s2, len_s2 + 1)
 			== ft_strlen(&s3[len_s1]))
+		{
+			//free((char *)s1);
+			//free((char *)s2);
 			return (s3);
+		}
+		else
+			free(s3);
 	}
 	return (0);
 }
-
