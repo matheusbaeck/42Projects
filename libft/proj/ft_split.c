@@ -21,7 +21,7 @@ static char	*ft_piece_split(const char *s, size_t start, int c)
 	while (((unsigned char)s[len_piece + start])
 		&& ((unsigned char)s[len_piece + start]) != ((unsigned char) c))
 		len_piece++;
-	str = malloc((len_piece + 1) * sizeof(char));
+	str = ft_calloc((len_piece + 1), sizeof(char));
 	if (!str)
 		return (0);
 	ft_strlcpy(str, &s[start], len_piece + 1);

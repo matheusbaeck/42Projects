@@ -1,5 +1,5 @@
 
-#include "/Users/mamagalh/42Projects/ProjLibft/libft.h"
+#include "/Users/mamagalh/42Projects/#header/libft.h"
 
 #include <string.h>
 #include <stdio.h>
@@ -262,15 +262,15 @@ void	test_atoi(void)
 }
 */
 
-void	test_strnstr()
-{
-	char haystack[30] = "aaabcabcd";
-	char needle[10] = "aabc";
-	char * empty = (char*)"";
-	ft_strnstr(haystack, needle, -1); //== haystack + 1)
-	ft_strnstr(haystack, "a", -1); //== haystack
-	ft_strnstr(haystack, "c", -1); //== haystack + 4
-}
+// void	test_strnstr()
+// {
+// 	char haystack[30] = "aaabcabcd";
+// 	char needle[10] = "aabc";
+// 	char * empty = (char*)"";
+// 	ft_strnstr(haystack, needle, -1); //== haystack + 1)
+// 	ft_strnstr(haystack, "a", -1); //== haystack
+// 	ft_strnstr(haystack, "c", -1); //== haystack + 4
+// }
 
 
 int	main(void)
@@ -284,7 +284,8 @@ int	main(void)
 	//test_strjoin();
 	//test_strtrim();
 	// test_split();
-	test_strnstr();
-
+	// test_strnstr();
+	//ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+	printf("\nEND OF TEST\n");
 	return (0);
 }

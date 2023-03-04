@@ -6,12 +6,16 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/02/16 21:41:14 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/03/04 01:22:00 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = libft.a
+
+HEADER_NAME = libft.h
+
+NAME_BONUS = libft_bonus.a
 
 CC = cc
 
@@ -19,7 +23,9 @@ FLAGS = -Wall -Wextra -Werror -c -g -o
 
 LIB_CC = ar rcs
 
-LIB_PATH = ./
+LIB_PATH = /Users/mamagalh/42Projects/\#lib/
+
+HEADER_PATH = /Users/mamagalh/42Projects/\#header/
 
 SRC = ft_islower.c \
 	ft_isupper.c \
@@ -72,29 +78,30 @@ BONUS_SRC = ft_lstnew.c \
 
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
-all: $(NAME)
+all: $(NAME) clean
 
-$(NAME): $(OBJ) libft.h
-	$(LIB_CC) $(NAME) $(OBJ) libft.h
+$(NAME): $(OBJ) $(HEADER_NAME)
+	$(LIB_CC) $(NAME) $(OBJ) $(HEADER_NAME)
+	ln -f $(NAME) $(LIB_PATH)$(NAME)
+	ln -f $(HEADER_NAME) $(HEADER_PATH)$(HEADER_NAME)
 
 %.o:%.c
 	$(CC) $(FLAGS) $@ $<
 
 clean:
-	/bin/rm -rf *.o *.dSYM *.out
+	rm -rf *.o *.dSYM *.out *.a
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	rm -f $(NAME) $(NAME_BONUS) $(LIB_PATH)$(NAME) $(HEADER_PATH)$(HEADER_NAME)
 
-re: fclean libft.a all
+re: fclean all
 
-# $(CC) main.c -o main.out -lft -lbsd;
-main: $(SRC) clean
-	export LIBRARY_PATH=$(LIB_PATH); \
-	$(CC) main.c -o main.out -lft; \
-	./main.out | cat -e
+bonus_re: fclean bonus
 
-_bonus: $(BONUS_OBJ) libft.h
-	$(LIB_CC) libft.a $(BONUS_OBJ) libft.h
+bonus: $(NAME_BONUS) clean
 
-bonus: _bonus
+$(NAME_BONUS): $(OBJ) $(BONUS_OBJ) $(HEADER_NAME)
+	$(LIB_CC) $(NAME_BONUS) $(OBJ) $(BONUS_OBJ) $(HEADER_NAME)
+	ln -f $(NAME:.a=_bonus.a) $(NAME)
+	ln -f $(NAME:.a=_bonus.a) $(LIB_PATH)$(NAME)
+	ln -f $(HEADER_NAME) $(HEADER_PATH)$(HEADER_NAME)
