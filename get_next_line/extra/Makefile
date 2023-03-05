@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/17 01:21:47 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/03/04 02:42:10 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/03/05 18:58:17 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ HEADER_NAME = get_next_line.h
 
 HEADER_PATH = /Users/mamagalh/42Projects/\#header/
 
-SRC_PATH = /Users/mamagalh/42Projects/get_next_line/remake2/
+SRC_PATH = /Users/mamagalh/42Projects/get_next_line/proj/
 
 CC = cc
 
 HEADER_FLAG = -I$(HEADER_PATH)
 
-BUFFER_SIZE = -D BUFFER_SIZE=42
+BUFFER_SIZE = -D BUFFER_SIZE=10
 
 FLAGS = $(HEADER_FLAG) -Wall -Wextra -Werror -g
 
@@ -47,11 +47,21 @@ fclean: clean
 
 re: fclean all
 
-run: $(NAME)
+run: $(NAME) file
 	./$(NAME)
+	make diff
+	cat files/*_diff.txt
 
 srun: re run
 
 paco:
 	bash paco.sh
+
+file:
+	cd /Users/mamagalh/42Projects/get_next_line/extra/files/; \
+	make
+
+diff:
+	cd /Users/mamagalh/42Projects/get_next_line/extra/files/; \
+	make diff
 

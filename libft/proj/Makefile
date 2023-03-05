@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/03/04 01:22:00 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/03/04 21:39:03 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ BONUS_SRC = ft_lstnew.c \
 
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
-all: $(NAME) clean
+all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER_NAME)
 	$(LIB_CC) $(NAME) $(OBJ) $(HEADER_NAME)
@@ -98,7 +98,7 @@ re: fclean all
 
 bonus_re: fclean bonus
 
-bonus: $(NAME_BONUS) clean
+bonus: $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJ) $(BONUS_OBJ) $(HEADER_NAME)
 	$(LIB_CC) $(NAME_BONUS) $(OBJ) $(BONUS_OBJ) $(HEADER_NAME)

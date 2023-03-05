@@ -10,6 +10,6 @@ echo 'on run
         if isRunning then do script ""
         activate
         -- some command to execute
-        do script "cd /Users/mamagalh/42Projects/get_next_line/remake2 && paco" in front window
+        do script "cd /Users/mamagalh/42Projects/get_next_line/proj && paco" in front window
     end tell
 end run' | osascript -
