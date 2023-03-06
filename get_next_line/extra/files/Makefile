@@ -6,7 +6,10 @@ NAME = file0.txt \
 	file5.txt \
 	file6.txt \
 	file7.txt \
-	file8.txt
+	file8.txt \
+	file9.txt \
+	file11.txt \
+	file12.txt \
 
 NAME_EXIT = $(NAME:.txt=_exit.txt)
 
@@ -18,7 +21,7 @@ all: clean $(NAME_EXIT)
 	touch $@
 
 %_diff.txt: %.txt
-	diff -e $< $(<:.txt=_exit.txt) > $@ 
+	diff $< $(<:.txt=_exit.txt) > $@ 
 
 clean:
 	rm -rf $(NAME_EXIT) $(NAME_DIFF)
