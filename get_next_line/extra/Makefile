@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/17 01:21:47 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/03/05 18:58:17 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/03/06 02:28:38 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ FLAGS = $(HEADER_FLAG) -Wall -Wextra -Werror -g
 
 SRC = main.c \
 	$(SRC_PATH)get_next_line.c \
-	$(SRC_PATH)get_next_line_utils.c
+	$(SRC_PATH)get_next_line_utils.cs
 
 all: $(NAME)
 

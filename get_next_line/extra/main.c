@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:23:32 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/06 01:55:31 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/06 02:28:25 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,74 +113,6 @@ int	run_test_bad(char *cfd, char *cfd_exit)
 	free(str);
 	return (0);
 }
-
-// int	run_test_bonus(char *cfd, char *cfd_exit, char *cfd2, char *cfd_exit2)
-// {
-// 	char	*str;
-// 	char	*str2;
-// 	int		count;
-// 	int		end;
-// 	int		fd;
-// 	int		fd_exit;
-// 	int		fd2;
-// 	int		fd_exit2;
-
-// 	fd = open(cfd, 2);
-// 	fd_exit = open(cfd_exit, 2);
-// 	fd2 = open(cfd2, 2);
-// 	fd_exit2 = open(cfd_exit2, 2);
-// 	count = 0;
-// 	end = 0;
-// 	while ((end / 5) == 1)
-// 	{
-// 		if ((count % 2) == 0 && (end / 2) == 0)
-// 		{
-// 			str = get_next_line(fd);
-// 			if (str)
-// 			{
-// 				if (*str)
-// 				{
-// 					write(fd_exit, str, strlen(str));
-// 					free(str);
-// 				}
-// 			}
-// 			else if ((count % 2) == 0)
-// 			{
-// 				write(1, cfd, 11);
-// 				write(1, "    exit 2 NULL\n", 16);
-// 				end += 2;
-// 			}
-// 		}
-// 		else if ((end / 3) == 0)
-// 		{
-// 			str2 = get_next_line(fd2);
-// 			if (str2)
-// 			{
-// 				if (*str2)
-// 				{
-// 					write(fd_exit2, str2, strlen(str2));
-// 					free(str2);
-// 				}
-// 				else
-// 				{
-// 					write(1, cfd, 11);
-// 					write(1, "    exit 2 NULL\n", 16);
-// 					free(str2);
-// 					return (1);
-// 				}
-// 			}
-// 			else if ((count % 2) == 0)
-// 			{
-// 				write(1, cfd, 11);
-// 				write(1, "    exit 2 NULL\n", 16);
-// 				end += 3;
-// 			}
-// 		}
-// 		count++;
-// 	}
-// 	system("leaks -q main.out");
-// 	return (0);
-// }
 
 int	run_test_bonus(char *cfd, char *cfd_exit, char *cfd2, char *cfd_exit2)
 {
