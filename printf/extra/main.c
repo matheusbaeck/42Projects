@@ -6,14 +6,16 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:31:39 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/08 03:34:34 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/09 02:28:26 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.a"
+#include "libftprintf.h"
 
-int	main(void);
+int	main(void)
 {
-	ft_printf("iudh%%%d+%i", 40, 2);
+	void *p[10];
+
+	ft_printf("iudh%c%s%d%i%p", 'a', "hello world!!", 10, 20, p);
 	return (0);
 }

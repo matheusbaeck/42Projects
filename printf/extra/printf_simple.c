@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   printf_simple.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 03:44:12 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/07 22:39:12 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/08 21:22:40 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdio.h>
-#include "libft.h"
-
-char ft_putstr()
+#include "libftprintf.h"
 
 void	(*anytoa(void *var))(char c)
 {
