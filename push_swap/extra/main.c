@@ -1,40 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 21:06:02 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/11 06:50:05 by mamagalh@st      ###   ########.fr       */
+/*   Created: 2023/03/10 21:40:13 by mamagalh@st       #+#    #+#             */
+/*   Updated: 2023/03/14 20:39:09 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "test.c"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int		main(int argc, char **argv)
 {
-	int	i;
-
-	i = 0;
-	if (!src && !dst)
-		return (0);
-	if (src > dst)
+	if (argc > 1)
 	{
-		while (i < (int)len)
-		{
-			((char *)dst)[i] = ((const char *)src)[i];
-			i++;
-		}
+		ft_push_swap(argv);
 	}
-	else
-	{
-		i = len - 1;
-		while (i >= 0)
-		{
-			((char *)dst)[i] = ((const char *)src)[i];
-			i--;
-		}
-	}
-	return (dst);
 }

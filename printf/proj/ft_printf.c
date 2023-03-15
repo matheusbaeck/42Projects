@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 21:20:37 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/09 02:25:13 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/15 03:17:56 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_anytoa(va_list arg_list, char format)
 {
 	int	(*fptr)(va_list);
 
+	fptr = NULL;
 	if (format == 'p')
 		fptr = ft_p;
 	else if (format == 'd' || format == 'i')
@@ -26,6 +27,8 @@ int	ft_anytoa(va_list arg_list, char format)
 		fptr = ft_x;
 	else if (format == 'X')
 		fptr = ft_xx;
+	else
+		return (0);
 	return ((*fptr)(arg_list));
 }
 
@@ -38,9 +41,12 @@ int	ft_is_format(va_list arg_list, char format)
 	formats = "cspdiuxX%";
 	if (!ft_strchr(formats, format))
 		return (0);
-	else if (format == 'c')
+	else if (format == 'c' || format == '%')
 	{
-		c = (char)va_arg(arg_list, int);
+		if (format == '%')
+			c = '%';
+		else
+			c = (char)va_arg(arg_list, int);
 		write(1, &c, 1);
 		return (1);
 	}
@@ -59,6 +65,8 @@ int	ft_print(char *s)
 	int	index;
 
 	index = 0;
+	if (!s)
+		return (0);
 	while (s[index])
 	{
 		write(1, &s[index], 1);
@@ -67,28 +75,27 @@ int	ft_print(char *s)
 	return (index);
 }
 
-int	ft_printf(char *format, ...)
+int	ft_printf(const char *s, ...)
 {
 	va_list	arg_list;
 	int		i;
 	int		j;
-	char	*str;
 
-	va_start(arg_list, format);
+	va_start(arg_list, s);
 	i = 0;
 	j = 0;
-	while (format[i])
+	while (s[i])
 	{
-		if (format[i] == '%' && ++i)
+		if (s[i] == '%' && ++i)
 		{
-			if (format[i])
-				j += ft_is_format(arg_list, format[i]);
+			if (s[i])
+				j += ft_is_format(arg_list, s[i]);
 			else
 				return (0);
 		}
-		else if (format[i])
+		else if (s[i])
 		{
-			write(1, &format[i], 1);
+			write(1, &s[i], 1);
 			j++;
 		}
 		i++;

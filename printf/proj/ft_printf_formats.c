@@ -1,19 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_formats.c                                   :+:      :+:    :+:   */
+/*   ft_printf_formats.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:29:53 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/09 03:28:31 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/15 03:24:57 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
+#include "ft_printf.h"
 
 int	ft_c(va_list arg_list)
 {
@@ -27,11 +24,17 @@ int	ft_c(va_list arg_list)
 
 int	ft_p(va_list arg_list)
 {
-	unsigned int	p;
+	void	*p;
 
-	p = va_arg(arg_list, unsigned int);
-	write(1, "0x", 2);
-	return(ft_puthex(p, 0, 'x'));
+	p = va_arg(arg_list, void *);
+	if (p == NULL)
+	{
+		write(1, "0x0", 2);
+		return (3);
+	}
+	else
+		write(1, "0x", 2);
+	return(2 + ft_putbase((unsigned long int)p, "0123456789abcdef", 16));
 }
 
 int	ft_d(va_list arg_list)
@@ -39,49 +42,31 @@ int	ft_d(va_list arg_list)
 	int	n;
 
 	n = va_arg(arg_list, int);
-	return (ft_print(ft_itoa(n)));
+	return (ft_putbase(n, "0123456789", 10));
 }
 
 int	ft_u(va_list arg_list)
 {
 	unsigned int	u;
-	unsigned int	divisor;
-	unsigned int	nb;
-	char			c;
-	int				j;
 
 	u = va_arg(arg_list, unsigned int);
-	divisor = 1;
-	nb = 0;
-	while (divisor <= UINT_MAX / 10 || (u - divisor) > 10)
-		divisor *= 10;
-	j = 0;
-	while (u > 10)
-	{
-		nb += u % divisor;
-		u -= (u % divisor);
-		divisor /= 10;
-		c = nb + '0';
-		write(1, &c, 1);
-	}
-	return (j);
+	return (ft_putbase(u, "0123456789", 10));
 }
 
-int	ft_puthex(int nb, int i, int format)
+int	ft_putbase(unsigned long int nb, char *set, int base)
 {
-	if ((nb + 16) > 16)
+	static int	i;
+	char		c;
+
+	i = 0;
+	if (i == 0 && nb == 0 && ++i)
+		write(1, &set[0], 1);
+	if (nb > 0)
 	{
-		i += ft_puthex(nb / 16, i, format);
-		if (nb % 16 > 10)
-		{
-			if (format == 'X')
-				nb = (nb % 16) - 10 + 'A';
-			else
-				nb = (nb % 16) - 10 + 'a';
-		}
-		else
-			nb = nb % 16;
-		write(1, &nb, 1);
+		ft_putbase(nb / base, set, base);
+		nb = nb % base;
+		c = set[nb];
+		write(1, &c, 1);
 		i++;
 		return (i);
 	}
@@ -94,7 +79,7 @@ int	ft_x(va_list arg_list)
 	int	n;
 
 	n = va_arg(arg_list, int);
-	return (ft_puthex(n, 0, 'x'));
+	return (ft_putbase(n, "0123456789abcdef", 16));
 }
 
 int	ft_xx(va_list arg_list)
@@ -102,5 +87,5 @@ int	ft_xx(va_list arg_list)
 	int	n;
 
 	n = va_arg(arg_list, int);
-	return (ft_puthex(n, 0, 'X'));
+	return (ft_putbase(n, "0123456789ABCDEF", 16));
 }

@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 15:51:24 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/02/08 17:29:30 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/11 06:46:06 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,4 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	dst[i] = '\0';
 	return (ft_strlen(src));
 }
+

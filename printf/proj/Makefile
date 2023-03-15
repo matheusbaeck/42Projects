@@ -6,30 +6,39 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 03:34:50 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/03/08 03:45:24 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/03/15 01:59:36 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-HEADER_NAME = libftprintf.h
-
 CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-HEADER_FLAGS = -I/Users/mamagalh/42Projects/\#header
-
-LIB_FLAGS = -L/Users/mamagalh/42Projects/\#lib -lft
-
 LIBRARYES = libft.a
+
+HEADER = ft_printf.h \
+	libft.h
 
 SRC = ft_printf.c \
 	ft_printf_formats.c
 
 OBJ = $(SRC:.c=.o)
 
-%.o:%.c
-	$(CC) $(FLAGS) -c $< $@
+all:$(NAME)
 
-$(NAME): $(OBJ) $(HEADER_NAME)
+$(NAME): $(OBJ) $(LIBRARYES) $(HEADER)
+	ln libft.a libftprintf.a
+	ar -rcs $(NAME) $(OBJ)
+
+%.o:%.c
+	$(CC) $(FLAGS) -c -g $< -o $@
+
+clean:
+	rm -rf *.o
+
+fclean: clean
+	rm -rf $(NAME)
+
+re:fclean all
