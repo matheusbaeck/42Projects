@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 03:34:50 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/03/15 01:59:36 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/03/17 01:26:35 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,21 +16,20 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-LIBRARYES = libft.a
-
-HEADER = ft_printf.h \
-	libft.h
+HEADER = ft_printf.h
 
 SRC = ft_printf.c \
-	ft_printf_formats.c
+	ft_printf_formats.c \
+	ft_printf_utils.c
 
 OBJ = $(SRC:.c=.o)
 
 all:$(NAME)
 
-$(NAME): $(OBJ) $(LIBRARYES) $(HEADER)
-	ln libft.a libftprintf.a
+$(NAME): $(OBJ) $(HEADER)
 	ar -rcs $(NAME) $(OBJ)
+	ln -f libftprintf.a /Users/mamagalh/42Projects/\#lib/libftprintf.a
+	ln -f ft_printf.h /Users/mamagalh/42Projects/\#libft_printf.h
 
 %.o:%.c
 	$(CC) $(FLAGS) -c -g $< -o $@

@@ -6,21 +6,11 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:29:53 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/15 03:24:57 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/16 23:14:45 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_c(va_list arg_list)
-{
-	char	c;
-	int		d;
-
-	d = va_arg(arg_list, int);
-	c = (char)d;
-	return(ft_print(&c));
-}
 
 int	ft_p(va_list arg_list)
 {
@@ -29,20 +19,22 @@ int	ft_p(va_list arg_list)
 	p = va_arg(arg_list, void *);
 	if (p == NULL)
 	{
-		write(1, "0x0", 2);
+		if (write(1, "0x0", 3) < 0)
+			return (-1);
 		return (3);
 	}
 	else
-		write(1, "0x", 2);
-	return(2 + ft_putbase((unsigned long int)p, "0123456789abcdef", 16));
+		if (write(1, "0x", 2) < 0)
+			return (-1);
+	return (2 + ft_putbaseu((unsigned long int)p, "0123456789abcdef", 16, 0));
 }
 
 int	ft_d(va_list arg_list)
 {
-	int	n;
+	int	nb;
 
-	n = va_arg(arg_list, int);
-	return (ft_putbase(n, "0123456789", 10));
+	nb = va_arg(arg_list, int);
+	return (ft_putbase(nb, "0123456789", 10, 0));
 }
 
 int	ft_u(va_list arg_list)
@@ -50,42 +42,21 @@ int	ft_u(va_list arg_list)
 	unsigned int	u;
 
 	u = va_arg(arg_list, unsigned int);
-	return (ft_putbase(u, "0123456789", 10));
-}
-
-int	ft_putbase(unsigned long int nb, char *set, int base)
-{
-	static int	i;
-	char		c;
-
-	i = 0;
-	if (i == 0 && nb == 0 && ++i)
-		write(1, &set[0], 1);
-	if (nb > 0)
-	{
-		ft_putbase(nb / base, set, base);
-		nb = nb % base;
-		c = set[nb];
-		write(1, &c, 1);
-		i++;
-		return (i);
-	}
-	else
-		return (i);
+	return (ft_putbaseu(u, "0123456789", 10, 0));
 }
 
 int	ft_x(va_list arg_list)
 {
-	int	n;
+	unsigned int	n;
 
-	n = va_arg(arg_list, int);
-	return (ft_putbase(n, "0123456789abcdef", 16));
+	n = va_arg(arg_list, unsigned int);
+	return (ft_putbaseu(n, "0123456789abcdef", 16, 0));
 }
 
 int	ft_xx(va_list arg_list)
 {
-	int	n;
+	unsigned int	n;
 
-	n = va_arg(arg_list, int);
-	return (ft_putbase(n, "0123456789ABCDEF", 16));
+	n = va_arg(arg_list, unsigned int);
+	return (ft_putbaseu(n, "0123456789ABCDEF", 16, 0));
 }

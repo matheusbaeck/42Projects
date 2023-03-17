@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 21:20:37 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/15 03:17:56 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/16 23:14:47 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int	ft_is_format(va_list arg_list, char format)
 			c = '%';
 		else
 			c = (char)va_arg(arg_list, int);
-		write(1, &c, 1);
+		if (write(1, &c, 1) < 0)
+			return (-1);
 		return (1);
 	}
 	else if (format == 's')
@@ -60,21 +61,6 @@ int	ft_is_format(va_list arg_list, char format)
 	return (0);
 }
 
-int	ft_print(char *s)
-{
-	int	index;
-
-	index = 0;
-	if (!s)
-		return (0);
-	while (s[index])
-	{
-		write(1, &s[index], 1);
-		index++;
-	}
-	return (index);
-}
-
 int	ft_printf(const char *s, ...)
 {
 	va_list	arg_list;
@@ -82,23 +68,23 @@ int	ft_printf(const char *s, ...)
 	int		j;
 
 	va_start(arg_list, s);
-	i = 0;
+	i = -1;
 	j = 0;
-	while (s[i])
+	while (s[++i])
 	{
 		if (s[i] == '%' && ++i)
 		{
 			if (s[i])
 				j += ft_is_format(arg_list, s[i]);
 			else
-				return (0);
+				return (-1);
 		}
 		else if (s[i])
 		{
-			write(1, &s[i], 1);
+			if (write(1, &s[i], 1) < 0)
+				return (-1);
 			j++;
 		}
-		i++;
 	}
 	va_end(arg_list);
 	return (j);
