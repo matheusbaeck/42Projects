@@ -6,13 +6,13 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 03:44:12 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/08 21:22:40 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/18 07:31:00 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	(*anytoa(void *var))(char c)
+void	(*putany(void *var))(char c)
 {
 	if (c == 'd')
 		return (ft_itoa(int n));
