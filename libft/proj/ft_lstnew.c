@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:04:51 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/03 19:04:52 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/22 11:32:48 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,4 @@ t_list	*ft_lstnew(void *content)
 	nodo->next = 0;
 	return (nodo);
 }
+ 

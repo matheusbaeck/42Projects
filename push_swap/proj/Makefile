@@ -5,37 +5,37 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/08 03:34:50 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/03/22 12:45:51 by mamagalh@st      ###   ########.fr        #
+#    Created: 2023/03/21 23:11:40 by mamagalh@st       #+#    #+#              #
+#    Updated: 2023/03/22 02:12:16 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = push_swap
 
-CC = cc
+CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+SRCS =  main.c \
+	moves.c
 
-HEADER = ft_printf.h
+OBJS = ${SRCS:.c=.o}
 
-SRC = ft_printf.c \
-	ft_printf_formats.c \
-	ft_printf_utils.c
+CFLAGS = -Wall -Werror -Wextra
 
-OBJ = $(SRC:.c=.o)
+all: $(NAME)
 
-all:$(NAME)
+$(NAME): $(OBJS) libft.a
+	$(CC) $(CFLAGS) $(OBJS) libft.a -o $(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
-	ar -rcs $(NAME) $(OBJ)
+libft.a:
+	cp -f /Users/mamagalh/42Projects/#lib/libft.a ./libft.a
+	cp -f /Users/mamagalh/42Projects/#header/libft.h ./libft.h
 
-%.o:%.c
-	$(CC) $(FLAGS) -c -g $< -o $@
-
-clean:
-	rm -rf *.o
+clean: 
+	rm -f $(OBJS)
+	make -C clean
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
+	make -C fclean
 
-re:fclean all
+re: fclean all

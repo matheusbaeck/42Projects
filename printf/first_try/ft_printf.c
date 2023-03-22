@@ -6,13 +6,13 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 21:20:37 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/22 12:08:41 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/22 19:36:09 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putany(va_list arg_list, char format)
+int	ft_anytoa(va_list arg_list, char format)
 {
 	int	(*fptr)(va_list);
 
@@ -39,15 +39,17 @@ int	ft_is_format(va_list arg_list, char format)
 	char	c;
 
 	formats = "cspdiuxX%";
-	if (!ft_strchr(formats, format) && format != '\0')
-		return (write(1, &format, 1));
+	if (!ft_strchr(formats, format))
+		return (0);
 	else if (format == 'c' || format == '%')
 	{
 		if (format == '%')
 			c = '%';
 		else
 			c = (char)va_arg(arg_list, int);
-		return (write(1, &c, 1));
+		if (write(1, &c, 1) < 0)
+			return (-1);
+		return (1);
 	}
 	else if (format == 's')
 	{
@@ -55,7 +57,7 @@ int	ft_is_format(va_list arg_list, char format)
 		return (ft_print(s));
 	}
 	else
-		return (ft_putany(arg_list, format));
+		return (ft_anytoa(arg_list, format));
 	return (0);
 }
 
@@ -77,8 +79,12 @@ int	ft_printf(const char *s, ...)
 			else
 				return (j);
 		}
-		else if (s[i] && ++j)
-			write(1, &s[i], 1);
+		else if (s[i])
+		{
+			if (write(1, &s[i], 1) < 0)
+				return (-1);
+			j++;
+		}
 	}
 	va_end(arg_list);
 	return (j);

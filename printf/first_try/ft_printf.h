@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:50:39 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/22 13:08:08 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/22 19:37:09 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int		ft_putany(va_list arg_list, char format);
+int		ft_anytoa(va_list arg_list, char format);
 int		ft_is_format(va_list arg_list, char format);
 int		ft_print(char *s);
 int		ft_printf(const char *s, ...);

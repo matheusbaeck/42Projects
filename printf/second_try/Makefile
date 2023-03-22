@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 03:34:50 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/03/22 12:45:51 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/03/22 15:22:48 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ all:$(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
 	ar -rcs $(NAME) $(OBJ)
+	ln -f libftprintf.a /Users/mamagalh/42Projects/\#lib/libftprintf.a
+	ln -f ft_printf.h /Users/mamagalh/42Projects/\#libft_printf.h
 
 %.o:%.c
 	$(CC) $(FLAGS) -c -g $< -o $@

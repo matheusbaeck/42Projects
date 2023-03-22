@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/03/04 21:39:03 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/03/21 21:39:36 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ BONUS_SRC = ft_lstnew.c \
 
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
-all: $(NAME)
+all: $(NAME) clean
 
 $(NAME): $(OBJ) $(HEADER_NAME)
 	$(LIB_CC) $(NAME) $(OBJ) $(HEADER_NAME)

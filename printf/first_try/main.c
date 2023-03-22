@@ -16,9 +16,9 @@ int	main(void)
 
 	//"i%%udh\nc%c\ns%s\nd%d\ni%i\np%p\nx%x\nX%X", 'a', "hello world!!", INT_MIN, INT_MAX, NULL, INT64_MAX, INT64_MAX
 	
-	i = ft_printf("%u%", -10);
+	i = ft_printf("%u%%%%%%%%%%%%%akkkk", -10);
 	printf("\n");
-	j = printf("%u%", -10);
+	j = printf("%u%%%%%%%%%%%%%akkkk", -10);
 
 	printf("\n%d  ->  %d", i, j);
 	return (0);
