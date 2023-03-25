@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 21:20:37 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/18 07:29:20 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/25 01:58:10 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	ft_printf(const char *s, ...)
 			if (s[i])
 				j += ft_is_format(arg_list, s[i]);
 			else
-				return (j);
+				return (-1);
 		}
 		else if (s[i] && ++j)
 			write(1, &s[i], 1);

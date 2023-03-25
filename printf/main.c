@@ -22,8 +22,8 @@ int	main(void)
 	// printf("\n");
 	// printf("%d\n", i);
 	// printf("%d\n", y);
-
-	ft_printf("RETURN: %d\n", ft_printf("FT_printf: %d\n%i\n%x\n%X\n%c\n%s\n%u\n%%\n%kkkk", 10, 10, -10, -10, 'c', "string", -10));
-	printf("RETURN: %d\n", printf("FT_printf: %d\n%i\n%x\n%X\n%c\n%s\n%u\n%%\n%kkkk", 10, 10, -10, -10, 'c', "string", -10));
+	ft_printf("  %d  \n", ft_printf("a%k"));
+	printf("\n");
+	printf("  %d  \n", printf("a%k"));
 	return (0);
 }

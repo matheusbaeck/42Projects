@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 00:19:15 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/03/19 00:38:44 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/03/25 04:02:49 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ disk_use=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_u += $3} END {pri
 disk_percent=$(df -m | grep "/dev/" | grep -v "/boot" | awk '{disk_u += $3} {disk_t+= $2} END {printf("%d"), disk_u/disk_t*100}')
 
 # CPU LOAD
-cpul=$(vmstat 1 2 | tail -1 | awk '{printf $15}')
+cpul=$(vmstat | tail -1 | awk '{printf $15}')
 cpu_op=$(expr 100 - $cpul)
 cpu_fin=$(printf "%.1f" $cpu_op)
 

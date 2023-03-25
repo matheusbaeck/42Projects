@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 03:29:53 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/16 23:14:45 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/03/24 22:54:58 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,9 @@ int	ft_p(va_list arg_list)
 
 	p = va_arg(arg_list, void *);
 	if (p == NULL)
-	{
-		if (write(1, "0x0", 3) < 0)
-			return (-1);
-		return (3);
-	}
+		return (write(1, "0x0", 3));
 	else
-		if (write(1, "0x", 2) < 0)
-			return (-1);
+		write(1, "0x", 2);
 	return (2 + ft_putbaseu((unsigned long int)p, "0123456789abcdef", 16, 0));
 }
 
