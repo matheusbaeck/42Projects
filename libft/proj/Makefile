@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:37:38 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/03/21 21:39:36 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/03/28 22:11:15 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,7 @@ bonus_re: fclean bonus
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJ) $(BONUS_OBJ) $(HEADER_NAME)
-	$(LIB_CC) $(NAME_BONUS) $(OBJ) $(BONUS_OBJ) $(HEADER_NAME)
+	$(LIB_CC) $(NAME_BONUS) $(OBJ) $(BONUS_OBJ)
 	ln -f $(NAME:.a=_bonus.a) $(NAME)
 	ln -f $(NAME:.a=_bonus.a) $(LIB_PATH)$(NAME)
 	ln -f $(HEADER_NAME) $(HEADER_PATH)$(HEADER_NAME)

@@ -40,8 +40,8 @@ int	ft_swap(int **stacks, int stack, int *end, int mod)
 		{
 			if (ft_swap(stacks, other(stack), end, 1))
 				write(1, "ss\n", 3);
-			else
-				printf("erro\n");
+			//else
+				//printf("Error\n");
 		}
 		return (1);
 	}
@@ -50,11 +50,13 @@ int	ft_swap(int **stacks, int stack, int *end, int mod)
 
 int	ft_push(int **stacks, int stack, int *end, int mod)
 {
-	if (end[stack] > 1)
+	if (end[stack] >= 1)
 	{
-		stacks[other(stack)][end[other(stack)] + 1] = stacks[stack][end[stack]]; //stacks[!stack]
-		stacks[stack][end[stack]] = 0;
 		end[other(stack)]++;
+		stacks[other(stack)][end[other(stack)] - 1] = stacks[stack][0]; //stacks[!stack]
+		ft_rotate(stacks, other(stack), end, 1);
+		stacks[stack][0] = 0;
+		ft_rev_rotate(stacks, stack, end, 1);
 		end[stack]--;
 		if (mod == 0)
 		{
@@ -67,8 +69,8 @@ int	ft_push(int **stacks, int stack, int *end, int mod)
 		{
 			if (ft_swap(stacks, other(stack), end, 1))
 				write(1, "pp\n", 3);
-			else
-				printf("erro");
+			//else
+				//printf("erro");
 		}
 		return (1);
 	}
@@ -80,11 +82,13 @@ int	ft_rotate(int **stacks, int stack, int *end, int mod)
 	int	temp;
 	int	i;
 
-	i = -1;
-	temp = stacks[stack][0];
-	while (++i < end[stack])
-		stacks[stack][i] = stacks[stack][i + 1];
-	stacks[stack][end[stack]] = temp;
+	if (end[stack] <= 1)
+		return (1);
+	i = end[stack] + 1;
+	temp = stacks[stack][end[stack] - 1];
+	while (--i > 1)
+		stacks[stack][i - 1] = stacks[stack][i - 2];
+	stacks[stack][0] = temp;
 	if (mod == 0)
 	{
 		if (stack == 0)
@@ -95,7 +99,7 @@ int	ft_rotate(int **stacks, int stack, int *end, int mod)
 	else if (mod == 2)
 	{
 		if (ft_swap(stacks, other(stack), end, 1))
-			write(1, "rr\n", 3);
+			write(1, "rrr\n", 4);
 	}
 	return (1);
 }
@@ -105,11 +109,13 @@ int	ft_rev_rotate(int **stacks, int stack, int *end, int mod)
 	int	temp;
 	int	i;
 
-	i = end[stack] + 1;
-	temp = stacks[stack][end[stack]];
-	while (--i > 0)
-		stacks[stack][i] = stacks[stack][i - 1];
-	stacks[stack][0] = temp;
+	if (end[stack] <= 1)
+		return (1);
+	i = -1;
+	temp = stacks[stack][0];
+	while (++i < end[stack])
+		stacks[stack][i] = stacks[stack][i + 1];
+	stacks[stack][end[stack] - 1] = temp;
 	if (mod == 0)
 	{
 		if (stack == 0)
@@ -124,3 +130,4 @@ int	ft_rev_rotate(int **stacks, int stack, int *end, int mod)
 	}
 	return (1);
 }
+

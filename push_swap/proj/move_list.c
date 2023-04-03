@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   move_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 19:02:04 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/03/29 02:52:48 by mamagalh@st      ###   ########.fr       */
+/*   Created: 2023/04/03 11:57:14 by mamagalh@st       #+#    #+#             */
+/*   Updated: 2023/04/03 12:09:30 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_push_swap.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+t_list	*ft_newm_ove(int **stacks, int stack, int *end, int mod,
+		void (*fptr)(int **stacks, int stack, int *end, int mod))
 {
-	if (lst && del)
-	{
-		del(lst->content);
-		free(lst);
-	}
+	ps_list	*move;
+
+	move = (ps_list *)malloc(sizeof(*move));
+	if (!move)
+		return (0);
+	move->stacks = stacks;
+	move->stack = stack;
+	
+	return (move);
 }
