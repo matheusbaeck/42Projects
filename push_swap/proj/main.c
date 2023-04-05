@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 07:39:08 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/04/03 17:01:08 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/04/05 16:32:14 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	main(int argc, char **argv)
 	end[1] = 0;
 	stacks[0] = ft_get_numbers(argc, end[0], argv);
 	//stacks[1] = calloc(end[0] + 1, sizeof(*stacks[1]));
+	
 	ft_algorythm(stacks, end);
 	print_stacks(stacks, end);
 	return (0);

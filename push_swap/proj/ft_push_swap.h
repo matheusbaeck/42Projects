@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:03:06 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/04/03 13:38:14 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/04/05 16:31:05 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int		ft_is_orded(int **stacks, int stack, int *end, int mod);
 int		ft_radix(int **stacks, int stack, int *end, int magnitude);
 void	ft_algorythm_test(int **stacks, int *end);
 void	ft_algorythm(int **stacks, int *end);
+void	ft_normalize(int *stack, int end);
 
 #endif

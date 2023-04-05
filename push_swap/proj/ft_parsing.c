@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 01:50:42 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/04/03 16:40:45 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/04/05 16:12:55 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,32 @@ int	*ft_get_numbers(int argc, int count, char **argv)
 	if (!ft_check_duplicity(numbers))
 		return (0);
 	return (numbers);
+}
+
+void	ft_normalize(int *stack, int end)
+{
+	int	i;
+	int	j;
+	int	temp_min;
+	int	*temp_arr;
+
+
+	j = -1;
+	i = -1;
+	temp_min = stack[0];
+	temp_arr = malloc(end * sizeof(*temp_arr));
+	while (++j <= end)
+	{
+		while (++i < end)
+		{
+			if (stack[i] < temp_min)
+				temp_min = stack[i];
+		}
+		stack[j] = temp_min;
+		i = -1;		
+	}
+	i = -1;
+	while (++i < end)
+		stack[i] = temp_arr[i];
+	free(temp_arr);
 }

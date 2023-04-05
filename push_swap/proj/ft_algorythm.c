@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algorythm.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
+/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:49:24 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/04/03 21:43:41 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/04/05 16:37:47 by math42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,7 @@ int	ft_radix_skip(int **stacks, int stack, int *end, int magnitude)
 int	ft_radix(int **stacks, int stack, int *end, int magnitude)
 {
 	int	moves_count;
-	int	i;
 
-	i = -1;
 	moves_count = end[stack];
 	while (moves_count > 0)
 	{
