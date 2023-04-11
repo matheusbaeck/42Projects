@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
+#    By: math42 <math42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 23:11:40 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/03/29 23:06:57 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/04/05 21:45:55 by math42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-CC = gcc
+CC = cc
 
-SRCS =  main.c ft_parsing.c ft_moves.c ft_algorythm.c
+SRCS =  main.c ft_parsing.c ft_moves.c ft_algorythm.c 
 
 OBJS = ${SRCS:.c=.o}
 
@@ -32,12 +32,12 @@ ARG500B="6857452625 4964551975 7540564377 740145283 9636027611 4341009673 518089
 
 all: $(NAME)
 
-$(NAME): $(OBJS) libft.a
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) libft.a -o $(NAME)
 
 libft.a:
-	cp -f /Users/mamagalh/42Projects/#lib/libft.a ./libft.a
-	cp -f /Users/mamagalh/42Projects/#header/libft.h ./libft.h
+	cp -f ../../#lib/libft.a ./libft.a
+	cp -f ../../#header/libft.h ./libft.h
 
 clean: 
 	rm -f $(OBJS)
