@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fptr_moves.c                                       :+:      :+:    :+:   */
+/*   ft_ps_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 15:28:55 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/04/03 15:34:08 by mamagalh@st      ###   ########.fr       */
+/*   Created: 2023/04/25 19:47:11 by mamagalh@st       #+#    #+#             */
+/*   Updated: 2023/04/25 19:48:06 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ft_pa(int **stacks, int *end);
+unsigned int	ft_itou(int nb)
 {
-	ft_push(stacks, 0, end, 0);
-}
+	unsigned int	u;
 
-void	ft_pb(int **stacks, int *end);
-{
-	ft_push(stacks, 1, end, 0);
-}
-
-void	ft_ra(int **stacks, int *end);
-{
-	ft_rotate(stacks, 0, end, 0);
-}
-
-void	ft_rb(int **stacks, int *end);
-{
-	ft_rotate(stacks, 1, end, 0);
-}
-
-void	ft_rra(int **stacks, int *end);
-{
-	ft_rotate(stacks, 0, end, 0);
-}
-
-void	ft_rrb(int **stacks, int *end);
-{
-	ft_rotate(stacks, 1, end, 0);
+	u = 0;
+	if (nb == INT_MIN)
+		u = UINT_MAX;
+	else if (nb < 0)
+		u += INT_MAX + nb * -1;
+	else if (nb > 0)
+		u += nb;
+	return (nb);
 }

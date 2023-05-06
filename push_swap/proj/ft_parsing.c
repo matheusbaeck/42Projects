@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: math42 <math42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 01:50:42 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/04/05 21:08:46 by math42           ###   ########.fr       */
+/*   Updated: 2023/04/25 20:55:55 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,6 @@ int	ft_str_count(char *argv)
 		iter++;
 	}
 	return (count);
-}
-
-unsigned int	ft_itou(int nb)
-{
-	unsigned int	u;
-
-	u = 0;
-	if (nb == INT_MIN)
-		u = UINT_MAX;
-	else if (nb < 0)
-		u += INT_MAX + nb * -1;
-	else if (nb > 0)
-		u += nb;
-	return (nb);
 }
 
 int	ft_check_duplicity(int *numbers)
@@ -72,8 +58,8 @@ int	ft_check_isalldigit(int argc, char **argv)
 		i = -1;
 		while (argv[++i])
 		{
-			if (!ft_isdigit(argv[j][i])
-				&& (argv[j][i] == ' ' || argv[j][i] == '-' || argv[j][i] == '+'))
+			if (!ft_isdigit(argv[j][i]) && (argv[j][i] == ' '
+					|| argv[j][i] == '-' || argv[j][i] == '+'))
 				if (!ft_isdigit(argv[j][i + 1]))
 					return (0);
 		}
@@ -110,30 +96,112 @@ int	*ft_get_numbers(int argc, int count, char **argv)
 	return (numbers);
 }
 
-void	ft_normalize(int *stack, int end)
+void	ft_normalize(int **stacks, int *end)
 {
 	int	i;
 	int	j;
-	int	temp_min;
-	int	*temp_arr;
+	int	t;
+	int	*arr;
 
-
-	j = -1;
-	i = -1;
-	temp_min = stack[0];
-	temp_arr = malloc(end * sizeof(*temp_arr));
-	while (++j <= end)
+	i = 0;
+	j = 0;
+	arr = malloc((end[0]) * sizeof(int));
+	while (i < end[0])
 	{
-		while (++i < end)
+		t = stacks[0][i];
+		arr[i] = 1;
+		j = 0;
+		while (j < i)
 		{
-			if (stack[i] < temp_min)
-				temp_min = stack[i];
+			stacks[0][j] < t ? arr[i]++ : arr[j]++;
+			j++;
 		}
-		stack[j] = temp_min;
-		i = -1;		
+		i++;
 	}
-	i = -1;
-	while (++i < end)
-		stack[i] = temp_arr[i];
-	free(temp_arr);
+	while (--i >= 0)
+		stacks[0][i] = arr[i];
+	free(arr);
 }
+
+// void	setLowestNaturalNumber(int arr[], int size, int start)
+// {
+// 	if (start >= size)
+// 	{
+// 		return ;
+// 	}
+// 	setLowestNaturalNumber(arr, size, start + 1);
+// 	int i, smallest = 1;
+// 	for (i = 0; i < start; i++)
+// 	{
+// 		if (arr[i] == smallest)
+// 		{
+// 			smallest++;
+// 			i = -1;
+// 		}
+// 	}
+// 	if (arr[start] >= smallest)
+// 	{
+// 		arr[start] = smallest;
+// 	}
+// }
+// void	ft_normalize(int **stacks, int *end)
+// {
+// 	int	i;
+// 	int	j;
+// 	int	temp_min;
+// 	int	*temp_arr;
+// 	j = 0;
+// 	i = -1;
+// 	temp_min = stacks[0][0];
+// 	temp_arr = malloc((end[0]) * sizeof(int));
+// 	while (++j < end[0])
+// 	{
+// 		while (++i < end[0])
+// 		{
+// 			if (temp_arr[] stacks[0][i] < temp_min)
+// 				temp_min = i;
+// 		}
+// 		temp_arr[temp_min] = j;
+// 		temp_min = stacks[0][0];
+// 		i = -1;
+// 	}
+// 	i = -1;
+// 	while (++i < end[0])
+// 		stacks[0][i] = temp_arr[i + 1];
+// 	free(temp_arr);
+// }
+// void	ft_normalize(int **stacks, int *end)
+// {
+// 	int	i;
+// 	int	*temp_arr;
+// 	i = 0;
+// 	j = 0;
+// 	temp_min;
+// 	temp_arr = malloc((end[0]) * sizeof(int));
+// 	while (i < end[0])
+// 	{
+// 		temp_min = stacks[0][i];
+// 		temp_arr[i] = 1;
+// 		j = 0;
+// 		while (j < i)
+// 		{
+// 			if (stacks[0][j] < temp_min)
+// 			{
+// 				temp_arr[i]++;
+// 			}
+// 			else
+// 			{
+// 				temp_arr[j]++;
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	i = 0;
+// 	while (i < end[0])
+// 	{
+// 		stacks[0][i] = temp_arr[i];
+// 		i++;
+// 	}
+// 	free(temp_arr);
+// }
