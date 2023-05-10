@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 20:49:24 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/04/25 19:53:33 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/08 22:36:41 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_radix(int **stacks, int stack, int *end, int magnitude)
 	return (0);
 }
 
-void	ft_algorythm(int **stacks, int *end)
+void	ft_algorythm_radix(int **stacks, int *end)
 {
 	int	radix_count;
 	int	radix_max;

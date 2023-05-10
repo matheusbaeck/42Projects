@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 23:11:40 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/05/03 20:14:03 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/05/08 22:28:17 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = cc
 
-SRCS =  main.c ft_parsing.c ft_moves.c ft_algorythm.c ft_algorythm2.c ft_ps_utils.c
+SRCS =  main.c ft_parsing.c ft_moves.c ft_algorythm_lower.c ft_algorythm.c ft_algorythm2.c ft_algorythm_quick.c ft_ps_utils.c
 
 OBJS = ${SRCS:.c=.o}
 

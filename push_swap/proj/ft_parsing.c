@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 01:50:42 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/04/25 20:55:55 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/09 00:37:08 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,86 +122,3 @@ void	ft_normalize(int **stacks, int *end)
 		stacks[0][i] = arr[i];
 	free(arr);
 }
-
-// void	setLowestNaturalNumber(int arr[], int size, int start)
-// {
-// 	if (start >= size)
-// 	{
-// 		return ;
-// 	}
-// 	setLowestNaturalNumber(arr, size, start + 1);
-// 	int i, smallest = 1;
-// 	for (i = 0; i < start; i++)
-// 	{
-// 		if (arr[i] == smallest)
-// 		{
-// 			smallest++;
-// 			i = -1;
-// 		}
-// 	}
-// 	if (arr[start] >= smallest)
-// 	{
-// 		arr[start] = smallest;
-// 	}
-// }
-// void	ft_normalize(int **stacks, int *end)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	temp_min;
-// 	int	*temp_arr;
-// 	j = 0;
-// 	i = -1;
-// 	temp_min = stacks[0][0];
-// 	temp_arr = malloc((end[0]) * sizeof(int));
-// 	while (++j < end[0])
-// 	{
-// 		while (++i < end[0])
-// 		{
-// 			if (temp_arr[] stacks[0][i] < temp_min)
-// 				temp_min = i;
-// 		}
-// 		temp_arr[temp_min] = j;
-// 		temp_min = stacks[0][0];
-// 		i = -1;
-// 	}
-// 	i = -1;
-// 	while (++i < end[0])
-// 		stacks[0][i] = temp_arr[i + 1];
-// 	free(temp_arr);
-// }
-// void	ft_normalize(int **stacks, int *end)
-// {
-// 	int	i;
-// 	int	*temp_arr;
-// 	i = 0;
-// 	j = 0;
-// 	temp_min;
-// 	temp_arr = malloc((end[0]) * sizeof(int));
-// 	while (i < end[0])
-// 	{
-// 		temp_min = stacks[0][i];
-// 		temp_arr[i] = 1;
-// 		j = 0;
-// 		while (j < i)
-// 		{
-// 			if (stacks[0][j] < temp_min)
-// 			{
-// 				temp_arr[i]++;
-// 			}
-// 			else
-// 			{
-// 				temp_arr[j]++;
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while (i < end[0])
-// 	{
-// 		stacks[0][i] = temp_arr[i];
-// 		i++;
-// 	}
-// 	free(temp_arr);
-// }
