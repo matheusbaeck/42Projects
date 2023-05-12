@@ -54,7 +54,7 @@ static unsigned int	ft_count_split(const char *s, int c)
 
 static int	ft_free(char **str, unsigned int count)
 {
-	while (--count > 1)
+	while (--count > 0)
 		free(str[count]);
 	free(str);
 	return (0);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_algorythm2.c                                    :+:      :+:    :+:   */
+/*   ft_algorythm2 copy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 20:13:18 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/08 20:34:50 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/10 22:55:27 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,54 +40,6 @@ int **ft_arr2cpy(int **src, int y, int x)
 		dest[i] = ft_arrcpy(src[i], x);
 	}
 	return (dest);
-}
-
-int ft_rate_order(int **stacks, int *end)
-{
-	int *arr;
-	int	i;
-	int j;
-	int result;
-
-	arr = malloc((end[0] + end[1]) * sizeof(int));
-	j = -1;
-	i = end[1];
-	result = 0;
-	while (--i > 0)
-		arr[++j] = stacks[1][i];
-	while (j < (end[0] + end[1]))
-		arr[++j] = stacks[0][++i];
-	while (arr[0] != 1)
-	{
-		i = arr[0];
-		j = 0;
-		while (++j < (end[0] + end[1]))
-			arr[j] = arr[j - 1];
-		arr[j] = i;
-	}
-	j = -1;
-	while (++j < (end[0] + end[1]))
-	{
-		i = arr[j] - j;
-		if (i > 0)
-			result += i;
-		else
-			result -= i;
-	}
-	return (result);	
-}
-
-int ft_is_orded(int **stacks, int stack, int *end)
-{
-	int i;
-
-	i = -1;
-	while (++i < (end[stack] - 1))
-	{
-		if (ft_is_next(stacks[stack][i], stacks[stack][i + 1], stack) != 1)
-			return (i + 1);
-	}
-	return (i + 1);	
 }
 
 int ft_is_next(int a, int b, int stack)

@@ -6,30 +6,11 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 01:50:42 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/11 15:00:55 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/12 03:30:00 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-int	ft_str_count(char *argv)
-{
-	int	count;
-	int	iter;
-
-	count = 0;
-	iter = 0;
-	while (argv[iter])
-	{
-		if (ft_isdigit(argv[iter]))
-		{
-			if (count == 0 || argv[iter - 1] == ' ')
-				count++;
-		}
-		iter++;
-	}
-	return (count);
-}
 
 int	ft_check_duplicity(int *numbers)
 {
@@ -59,13 +40,33 @@ int	ft_check_isalldigit(int argc, char **argv)
 		while (argv[++i])
 		{
 			if (!ft_isdigit(argv[j][i]) && (argv[j][i] == ' '
-					|| argv[j][i] == '-' || argv[j][i] == '+'))
+					|| (argv[j][i] == '-' && ft_isdigit(argv[j][i + 1]))
+					|| (argv[j][i] == '+' && ft_isdigit(argv[j][i + 1]))))
 				if (!ft_isdigit(argv[j][i + 1]))
 					return (0);
 		}
 		j++;
 	}
 	return (1);
+}
+
+int	ft_str_count(char *argv)
+{
+	int	j;
+	int	i;
+
+	j = 0;
+	i = 0;
+	while (argv[i])
+	{
+		if (ft_isdigit(argv[i]))
+		{
+			if (j == 0 || argv[i - 1] == ' ')
+				j++;
+		}
+		i++;
+	}
+	return (j);
 }
 
 int	*ft_get_numbers(int argc, int count, char **argv)
@@ -88,13 +89,18 @@ int	*ft_get_numbers(int argc, int count, char **argv)
 		if (!str)
 			return (0);
 		while (str[index_str])
-			numbers[index_nbr++] = ft_atoi(str[index_str++]);
+		{
+			numbers[index_nbr++] = ft_atoi(str[index_str]);
+			free(str[index_str++]);
+		}
 		index_str = 0;
+		str = NULL;
 	}
-	if (!ft_check_duplicity(numbers))
-		return (0);
+	free(str);
 	return (numbers);
 }
+
+int *ft
 
 void	ft_normalize(int **stacks, int *end)
 {
@@ -110,11 +116,13 @@ void	ft_normalize(int **stacks, int *end)
 	{
 		t = stacks[0][i];
 		arr[i] = 1;
-		j = 0;
-		while (j < i)
+		j = -1;
+		while (++j < i)
 		{
-			stacks[0][j] < t ? arr[i]++ : arr[j]++;
-			j++;
+			if (stacks[0][j] < t)
+				arr[i]++;
+			else
+				arr[j]++;
 		}
 		i++;
 	}
