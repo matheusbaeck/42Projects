@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:47:11 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/11 15:00:55 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/12 22:50:14 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,25 @@ int ft_is_orded(int **stacks, int stack, int *end)
 			return (i + 1);
 	}
 	return (i + 1);	
+}
+
+int	ft_abs(int n)
+{
+	if (n >= 0)
+		return (n);
+	else
+		return (n * (-1));
+}
+
+int	ft_is_in(int **stacks, int stack, int *end, int target)
+{
+	int	i;
+
+	i = -1;
+	while (++i < end[stack])
+	{
+		if (stacks[stack][i] == target)
+			return (i);
+	}
+	return (-1);
 }

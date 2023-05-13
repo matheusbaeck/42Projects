@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 01:50:42 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/11 15:00:55 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/12 23:25:08 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	*ft_get_numbers(int argc, int count, char **argv)
 
 	numbers = calloc(count + 1, sizeof(*numbers));
 	if (!numbers)
-		return (0);
+		return (NULL);
 	arg_counter = 1;
 	index_str = 0;
 	index_nbr = 0;
@@ -86,13 +86,11 @@ int	*ft_get_numbers(int argc, int count, char **argv)
 	{
 		str = ft_split(argv[arg_counter - 1], ' ');
 		if (!str)
-			return (0);
+			return (free(numbers), NULL);
 		while (str[index_str])
 			numbers[index_nbr++] = ft_atoi(str[index_str++]);
 		index_str = 0;
 	}
-	if (!ft_check_duplicity(numbers))
-		return (0);
 	return (numbers);
 }
 

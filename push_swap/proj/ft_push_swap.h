@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:03:06 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/10 22:57:46 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/13 05:14:54 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,14 @@ void	ft_algorythm_test(int **stacks, int *end);
 int		ft_radix(int **stacks, int stack, int *end, int magnitude);
 void	ft_algorythm_radix(int **stacks, int *end);
 //ALGORYTHM ENTROPY
-int **ft_get_shadow(int *end, int start_zero, int start_one);
+void	ft_get_shadow(int **shadow, int **stacks, int start_zero, int start_one);
 int	ft_abs(int n);
 int	ft_get_entropy(int **stacks,int stack, int *end, int **shadow);
 void	ft_algorythm_entropy(int **stacks, int *end);
+void	ft_shadow_destroy(int **shadow);
+//ENTROPY MOVES
+void	ft_do_push(int **stacks, int stack,  int *end, int **shadow);
+void	ft_do_rotate(int **stacks, int *end, int **shadow, int target);
 //ALGORYTHM LOWER
 int ft_hightest(int **stacks, int stack, int *end);
 int ft_lowest(int **stacks, int stack, int *end);
@@ -60,5 +64,7 @@ int	*ft_arrcpy(int *src, int size);
 int **ft_arr2cpy(int **src, int y, int x);
 int ft_is_next(int a, int b, int stack);
 int ft_is_orded(int **stacks, int stack, int *end);
+int	ft_abs(int n);
+int	ft_is_in(int **stacks, int stack, int *end, int target);
 
 #endif

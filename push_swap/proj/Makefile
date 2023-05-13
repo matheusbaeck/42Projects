@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 23:11:40 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/05/10 22:50:25 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/05/12 21:17:28 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = cc
 
-SRCS =  main.c ft_parsing.c ft_moves.c ft_algorythm_lower.c ft_algorythm_radix.c ft_algorythm_entropy.c ft_ps_utils.c
+SRCS =  main.c ft_parsing.c ft_moves.c ft_algorythm_lower.c ft_algorythm_radix.c ft_algorythm_entropy.c ft_entropy_moves.c ft_ps_utils.c
 
 OBJS = ${SRCS:.c=.o}
 

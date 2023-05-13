@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 07:39:08 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/10 22:51:02 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/13 03:17:24 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	int	end[2];
-	int	*stacks[2];
+	int	*stacks[3];
 	int	i;
 
 	i = 1;
@@ -26,8 +26,13 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	end[1] = 0;
+	stacks[2] = end;
 	stacks[0] = ft_get_numbers(argc, end[0], argv);
+	if (!stacks[0])
+		return (write(1, "Erro\n", 5), 0);
 	stacks[1] = calloc(end[0] + 1, sizeof(*stacks[1]));
+	if (!ft_check_duplicity(stacks[0]))
+		return (write(1, "Erro\n", 5), 0);
 	ft_normalize(stacks, end);
 	if (end[0] == 3)
 		ft_algorythm_3n(stacks, 0, end);
