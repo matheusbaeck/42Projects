@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 07:39:08 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/13 03:17:24 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/14 01:50:03 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 		ft_algorythm_3n(stacks, 0, end);
 	else if (end[0] == 5)
 		ft_algorythm_5n(stacks, 0, end);
-	else if (end[0] <= 100)
+	else if (end[0] <= 499)
 		ft_algorythm_entropy(stacks, end);
 	else
 		ft_algorythm_radix(stacks, end);

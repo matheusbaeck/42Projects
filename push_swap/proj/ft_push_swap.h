@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 08:03:06 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/13 05:14:54 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/14 01:30:59 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,15 @@ int	ft_abs(int n);
 int	ft_get_entropy(int **stacks,int stack, int *end, int **shadow);
 void	ft_algorythm_entropy(int **stacks, int *end);
 void	ft_shadow_destroy(int **shadow);
+//ENTROPY CLASSIFY
+int	ft_push_back_class(int **stacks, int **shadow);
+int	ft_swap_class(int **stacks, int **shadow);
+int ft_followed_class(int **stacks, int **shadow);
+int	ft_push_down_class(int **stacks, int **shadow);
 //ENTROPY MOVES
 void	ft_do_push(int **stacks, int stack,  int *end, int **shadow);
 void	ft_do_rotate(int **stacks, int *end, int **shadow, int target);
+void	ft_do_followed(int **stacks, int **shadow, int i);
 //ALGORYTHM LOWER
 int ft_hightest(int **stacks, int stack, int *end);
 int ft_lowest(int **stacks, int stack, int *end);

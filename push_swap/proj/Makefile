@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 23:11:40 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/05/12 21:17:28 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/05/13 16:38:23 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = push_swap
 
 CC = cc
 
-SRCS =  main.c ft_parsing.c ft_moves.c ft_algorythm_lower.c ft_algorythm_radix.c ft_algorythm_entropy.c ft_entropy_moves.c ft_ps_utils.c
+SRCS =  main.c ft_parsing.c ft_moves.c ft_algorythm_lower.c ft_algorythm_radix.c \
+	ft_algorythm_entropy.c ft_algorythm_entropy_classify.c ft_entropy_moves.c ft_ps_utils.c
 
 OBJS = ${SRCS:.c=.o}
 
@@ -26,7 +27,7 @@ ARG500="6857452625 4964551975 7540564377 740145283 9636027611 4341009673 5180897
 
 all: $(NAME) clean
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) clean
 	$(CC) $(CFLAGS) $(OBJS) libft.a -o $(NAME)
 
 libft.a:
