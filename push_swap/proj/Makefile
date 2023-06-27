@@ -6,7 +6,7 @@
 #    By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 23:11:40 by mamagalh@st       #+#    #+#              #
-#    Updated: 2023/05/13 16:38:23 by mamagalh@st      ###   ########.fr        #
+#    Updated: 2023/05/14 18:05:58 by mamagalh@st      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ ARG500="6857452625 4964551975 7540564377 740145283 9636027611 4341009673 5180897
 all: $(NAME) clean
 
 $(NAME): $(OBJS) clean
-	$(CC) $(CFLAGS) $(OBJS) libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS) libft.a -o $(NAME)
 
 libft.a:
 	cp -f ../../#lib/libft.a ./libft.a

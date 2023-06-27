@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 20:13:18 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/14 01:38:23 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/14 19:28:40 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,9 +129,9 @@ void	ft_algorythm_entropy(int **stacks, int *end)
 		if ((temp = ft_push_back_class(stacks, shadow)) > 0)
 		{
 			if (temp == 1)
-				ft_do_rotate(stacks, end, shadow, (stacks[0][0] - 1));
+				ft_do_rotate(stacks, shadow, 0, (stacks[0][0] - 1));
 			if (temp == 2)
-				ft_do_rotate(stacks, end, shadow, (stacks[0][end[0] - 1] + 1));
+				ft_do_rotate(stacks, shadow, 0, (stacks[0][end[0] - 1] + 1));
 			ft_do_push(stacks, 1, end, shadow);
 		}
 		else if (ft_swap_class(stacks, shadow))
@@ -141,7 +141,7 @@ void	ft_algorythm_entropy(int **stacks, int *end)
 		else if (ft_push_down_class(stacks, shadow))
 			ft_do_push(stacks, 0, end, shadow);
 		else
-			ft_do_rotate(stacks, end, shadow, stacks[0][1]);
+			ft_do_rotate(stacks, shadow, 0, stacks[0][1]);
 		ft_shadow_destroy(shadow);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 21:12:28 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/14 01:40:43 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/14 19:29:22 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,26 @@ void	ft_do_push(int **stacks, int stack, int *end, int **shadow)
 	}
 }
 
-void	ft_do_rotate(int **stacks, int *end, int **shadow, int target)
+void	ft_do_rotate(int **stacks, int **shadow, int stack, int target)
 {
 	int	dist;
-	int	stack;
 	int	(*move)(int **, int, int *, int);
 
-
-	if ((dist = ft_is_in(stacks, 1, end, target)) >= 0)
-		stack = 1;
-	else if ((dist = ft_is_in(stacks, 0, end, target)) >= 0)
-		stack = 0;
-	move = ft_rotate;
-	if (dist > (end[0] / 2))
+	dist = ft_is_in(stacks, stack, stacks[2], target);
+	if (dist >= 0)
 	{
-		move = ft_rev_rotate;
-		dist = end[stack] - dist;
-	}
-	while (dist >= 0 && dist-- > 0)
-	{
-		(*move)(stacks, stack, end, 0);
-		(*move)(shadow, stack, end, 3);
+		if (dist > (stacks[2][0] / 2))
+		{
+			move = ft_rev_rotate;
+			dist = stacks[2][stack] - dist;
+		}
+		else
+			move = ft_rotate;
+		while (dist >= 0 && dist-- > 0)
+		{
+			(*move)(stacks, stack, stacks[2], 0);
+			(*move)(shadow, stack, stacks[2], 3);
+		}
 	}
 }
 
@@ -54,7 +53,7 @@ void	ft_do_followed(int **stacks, int **shadow, int i)
 	int	entropy;
 
 	entropy = stacks[0][0] - shadow[0][0];
-	ft_do_rotate(stacks, stacks[2], shadow, stacks[0][i]);
+	ft_do_rotate(stacks, shadow, 0, stacks[0][i]);
 	while (entropy-- > 0)
 		ft_do_push(stacks, 0, stacks[2], shadow);
 }

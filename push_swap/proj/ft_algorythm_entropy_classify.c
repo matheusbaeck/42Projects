@@ -6,7 +6,7 @@
 /*   By: mamagalh@student.42madrid.com <mamagalh    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:47:47 by mamagalh@st       #+#    #+#             */
-/*   Updated: 2023/05/14 01:39:36 by mamagalh@st      ###   ########.fr       */
+/*   Updated: 2023/05/14 19:29:08 by mamagalh@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_swap_class(int **stacks, int **shadow)
 	int	i;
 
 	if (stacks[0][stacks[2][0] -1] - shadow[0][stacks[2][0] -1] == 1 && stacks[0][0] - shadow[0][0] == -1)
-		return (ft_do_rotate(stacks, stacks[2], shadow, stacks[0][stacks[2][0] -1]), 1);
+		return (ft_do_rotate(stacks, shadow, 0, stacks[0][stacks[2][0] -1]), 1);
 	if (stacks[0][0] - shadow[0][0] == 1 && stacks[0][1] - shadow[0][1] == -1)
 		return (1);
 	if ((stacks[0][0] - shadow[0][0]) < 0 && (stacks[0][0]
